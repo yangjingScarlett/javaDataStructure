@@ -7,7 +7,7 @@ package com.yang.javadatastructure.b_sort;
 public class ArrayBubble {
 
     // 将最大值放到数组后面
-    public long[] sortByBubble(long[] arr) {
+    public void sortByBubble(long[] arr) {
         for (int i = arr.length; i > 0; i--) {
             for (int j = 0; j < i - 1; j++) {
                 long before = arr[j];
@@ -18,6 +18,5 @@ public class ArrayBubble {
                 }
             }
         }
-        return arr;
     }
 }

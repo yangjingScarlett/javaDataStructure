@@ -6,7 +6,7 @@ package com.yang.javadatastructure.b_sort;
  */
 public class ArraySelect {
 
-    public long[] sortBySelect(long[] arr) {
+    public void sortBySelect(long[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int minIndex = i;
             for (int j = i + 1; j < arr.length; j++) {
@@ -18,6 +18,5 @@ public class ArraySelect {
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
         }
-        return arr;
     }
 }
