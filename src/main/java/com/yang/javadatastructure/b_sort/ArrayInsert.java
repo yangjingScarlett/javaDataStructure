@@ -3,10 +3,12 @@ package com.yang.javadatastructure.b_sort;
 /*
  * @Author: jing yang 
  * @Date: 2018-09-03 11:20:05 
+ * 
+ * 原理：通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
  */
 public class ArrayInsert {
 
-    public long[] sortByInsert(long[] arr) {
+    public void sortByInsert(long[] arr) {
         for (int i = 1; i < arr.length; i++) {
             long temp = arr[i];// 被标记值
             int j;
@@ -19,20 +21,20 @@ public class ArrayInsert {
             // 当左边的值小于等于被标记值时，把被标记值插入
             arr[j] = temp;
         }
-        return arr;
     }
 
     public void sort(long[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            long current = arr[i];
-            for (int j = i; j > 0; j--) {
-                if (arr[j - 1] > current) {
+            long temp = arr[i];
+            int j;
+            for (j = i; j > 0; j--) {
+                if (temp < arr[j - 1]) {
                     arr[j] = arr[j - 1];
                 } else {
-                    arr[j] = current;
                     break;
                 }
             }
+            arr[j] = temp;
         }
     }
 }

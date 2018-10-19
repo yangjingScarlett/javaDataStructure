@@ -15,20 +15,22 @@ public class SortApp {
     }
 
     public static void main(String[] args) {
-        long[] arr = { 89, 20, 30, 22, 88, 67, 13, 56, 90, 45 };
+        long[] arr = new long[15];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (long) (100f * Math.random());
+        }
         display(arr);
 
-        /*ArrayBubble arrayBubble = new ArrayBubble();
-        arrayBubble.sortByBubble(arr);
-        display(arr);*/
+        // ArrayBubble arrayBubble = new ArrayBubble();
+        // arrayBubble.sortByBubble(arr);
+        // display(arr);
 
-        /*ArraySelect arraySelect = new ArraySelect();
-        arraySelect.sortBySelect(arr);
-        display(arr);*/
+        // ArraySelect arraySelect = new ArraySelect();
+        // arraySelect.sortBySelect(arr);
+        // display(arr);
 
-        /*ArrayInsert arrayInsert = new ArrayInsert();
-        long[] sortedByInsert = arrayInsert.sortByInsert(arr);
-        long[] sort = arrayInsert.sortByInsert(arr);
-        display(sortedByInsert); display(sort);*/
+        ArrayInsert arrayInsert = new ArrayInsert();
+        arrayInsert.sort(arr);
+        display(arr);
     }
 }
