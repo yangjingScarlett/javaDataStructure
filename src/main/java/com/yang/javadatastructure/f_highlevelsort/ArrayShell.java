@@ -1,9 +1,10 @@
 package com.yang.javadatastructure.f_highlevelsort;
 
-/**
- * @author yangjing
+/*
+ * @Author: jing yang 
+ * @Date: 2018-10-19 17:50:46 
  * 
- *         希尔排序
+ * 希尔排序原理：选取一个间隔，根据间隔将数组分为多个数组，对每个数组进行插入排序，直到间隔为1
  */
 public class ArrayShell {
 
@@ -20,11 +21,11 @@ public class ArrayShell {
     }
 
     public void display() {
-        System.out.print("{ ");
+        System.out.print("[ ");
         for (int i = 0; i < nElems; i++) {
             System.out.print(arr[i] + " ");
         }
-        System.out.println(" }");
+        System.out.println("]");
     }
 
     public void sortByShell() {
