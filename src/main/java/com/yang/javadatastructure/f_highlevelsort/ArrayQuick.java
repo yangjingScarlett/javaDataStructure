@@ -24,86 +24,85 @@ public class ArrayQuick {
         arr[nElems++] = insValue;
     }
 
+    public int getSize() {
+        return nElems;
+    }
+
     public void display() {
         System.out.print("{ ");
         for (int i = 0; i < nElems; i++) {
+            if (arr[i] < 10) {
+                System.out.print(" ");
+            }
             System.out.print(arr[i] + " ");
         }
         System.out.println("}");
     }
 
-    public void sortByQuicking() {
-        sortByQuick(0, nElems - 1);
-    }
-
-    public void sortByQuick(int leftIndex, int rightIndex) {
-        int size = rightIndex - leftIndex + 1;
-        if (size < 4) {
-            manualSort(leftIndex, rightIndex);
+    public void sortByQuick(int low, int high) {
+        int size = high - low + 1;
+        if (size > 3) {
+            int partition = partition(low, high);
+            sortByQuick(low, partition - 1);
+            sortByQuick(partition + 1, high);
         } else {
-            long pivot = middleOf3(leftIndex, rightIndex);
-            int partition = partition(leftIndex, rightIndex, pivot);
-            sortByQuick(leftIndex, partition - 1);
-            sortByQuick(partition + 1, rightIndex);
+            manualSort(low, high);
         }
 
     }
 
-    private int partition(int leftIndex, int rightIndex, long pivot) {
-        int left = leftIndex;
-        int right = rightIndex - 1;
-        while (true) {
-            while (arr[++left] < pivot)
-                ;
-
-            while (arr[--right] > pivot)
-                ;
-            if (left >= right) {
-                break;
-            } else {
+    private int partition(int low, int high) {
+        int left = low + 1;
+        int right = high;
+        long pivot = getMiddle(low, high);
+        while (left < right) {
+            while (left < right && arr[right] > pivot) {
+                right--;
+            }
+            while (left < right && arr[left] <= pivot) {
+                left++;
+            }
+            if (left < right) {
                 swap(left, right);
             }
         }
-        swap(left, rightIndex - 1);
+        swap(left, low + 1);
         return left;
     }
 
-    private void manualSort(int left, int right) {
-        int size = right - left + 1;
-        if (size <= 1) {
-            return;
+    private long getMiddle(int low, int high) {
+        int middle = (low + high) / 2;
+        if (arr[low] > arr[middle]) {
+            swap(low, middle);
         }
-        if (size == 2) {
-            if (arr[left] > arr[right]) {
-                swap(left, right);
-            }
-        } else {
-            if (arr[left] > arr[right - 1]) {
-                swap(left, right - 1);
-            }
-            if (arr[left] > arr[right]) {
-                swap(left, right);
-            }
-            if (arr[right - 1] > arr[right]) {
-                swap(right - 1, right);
-            }
+        if (arr[low] > arr[high]) {
+            swap(low, high);
         }
-
+        if (arr[middle] > arr[high]) {
+            swap(middle, high);
+        }
+        swap(middle, low + 1);
+        return arr[low + 1];
     }
 
-    private long middleOf3(int leftIndex, int rightIndex) {
-        int middleIndex = (leftIndex + rightIndex) / 2;
-        if (arr[leftIndex] > arr[middleIndex]) {
-            swap(leftIndex, rightIndex);
+    private void manualSort(int low, int high) {
+        int size = high - low + 1;
+        if (size == 2) {
+            if (arr[low] > arr[high]) {
+                swap(low, high);
+            }
+        } else if (size == 3) {
+            int middle = (low + high) / 2;
+            if (arr[low] > arr[middle]) {
+                swap(low, middle);
+            }
+            if (arr[low] > arr[high]) {
+                swap(low, high);
+            }
+            if (arr[middle] > arr[high]) {
+                swap(middle, high);
+            }
         }
-        if (arr[leftIndex] > arr[middleIndex]) {
-            swap(leftIndex, middleIndex);
-        }
-        if (arr[middleIndex] > arr[rightIndex]) {
-            swap(middleIndex, rightIndex);
-        }
-        swap(middleIndex, rightIndex - 1);
-        return arr[rightIndex - 1];
     }
 
     private void swap(int swapIndex1, int swapIndex2) {

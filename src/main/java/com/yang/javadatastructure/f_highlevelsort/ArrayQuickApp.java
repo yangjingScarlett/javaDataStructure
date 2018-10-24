@@ -13,8 +13,7 @@ public class ArrayQuickApp {
             arrayQuick.insert((long) (Math.random() * 100));
         }
         arrayQuick.display();
-
-        arrayQuick.sortByQuicking();
+        arrayQuick.sortByQuick(0, arrayQuick.getSize() - 1);
         arrayQuick.display();
     }
 }
