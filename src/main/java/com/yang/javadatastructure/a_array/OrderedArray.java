@@ -61,7 +61,7 @@ public class OrderedArray {
         if (deleteIndex >= 0) {
             nElems = nElems - 1;
             for (int i = deleteIndex; i < nElems; i++) {
-                arr[deleteIndex] = arr[deleteIndex + 1];
+                arr[i] = arr[i + 1];
             }
             return true;
         } else {
