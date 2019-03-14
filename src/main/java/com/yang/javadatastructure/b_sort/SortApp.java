@@ -8,8 +8,8 @@ public class SortApp {
 
     public static void display(long[] arr) {
         System.out.print("数组：[");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+        for (long anArr : arr) {
+            System.out.print(anArr + " ");
         }
         System.out.println("]");
     }
@@ -19,18 +19,29 @@ public class SortApp {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (long) (100f * Math.random());
         }
-        display(arr);
 
-        // ArrayBubble arrayBubble = new ArrayBubble();
-        // arrayBubble.sortByBubble(arr);
-        // display(arr);
+//        ArrayBubble arrayBubble = new ArrayBubble();
+//        long[] arrBubble = deepClone(arr);
+//        display(arrBubble);
+//        arrayBubble.sortByBubble(arrBubble);
+//        display(arrBubble);
 
-        // ArraySelect arraySelect = new ArraySelect();
-        // arraySelect.sortBySelect(arr);
-        // display(arr);
+//        ArraySelect arraySelect = new ArraySelect();
+//        long[] arrSelect = deepClone(arr);
+//        display(arrSelect);
+//        arraySelect.sortBySelect(arrSelect);
+//        display(arrSelect);
 
         ArrayInsert arrayInsert = new ArrayInsert();
-        arrayInsert.sort(arr);
-        display(arr);
+        long[] arrInsert = deepClone(arr);
+        display(arrInsert);
+        arrayInsert.sort(arrInsert);
+        display(arrInsert);
+    }
+
+    private static long[] deepClone(long[] arr) {
+        long[] cloneArr = new long[arr.length];
+        System.arraycopy(arr, 0, cloneArr, 0, arr.length);
+        return cloneArr;
     }
 }
