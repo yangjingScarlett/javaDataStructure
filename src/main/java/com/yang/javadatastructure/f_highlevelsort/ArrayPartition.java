@@ -4,7 +4,8 @@ package com.yang.javadatastructure.f_highlevelsort;
  * @Author: jing yang 
  * @Date: 2018-09-05 13:47:02 
  * 
- * 划分算法：选取一个枢纽，将数组中小于枢纽的元素放在左边，大于枢纽的元素放在右边
+ * 划分算法：选取一个枢纽，从数组两端开始进行，记录左边第一个大于枢纽的值，和右边第一个小于枢纽的值，然后交换它们。
+ * 将数组中小于枢纽的元素放在左边，大于枢纽的元素放在右边
  * 它其实时快速排序算法的一部分
  */
 public class ArrayPartition {
