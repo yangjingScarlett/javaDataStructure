@@ -31,5 +31,10 @@ public class LinkListApp {
             System.out.println("Cannot find link.");
         }
         linkList.displayLinkList();
+
+        linkList.insertLast(10, 10.00);
+        linkList.insertLast(11, 11.00);
+        linkList.insertLast(12, 12.00);
+        linkList.displayLinkList();
     }
 }

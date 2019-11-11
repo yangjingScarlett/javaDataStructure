@@ -22,6 +22,20 @@ public class LinkList {
         first = newLink;
     }
 
+    public void insertLast(int id, double data) {
+        Link newLink = new Link(id, data);
+        if (first == null) {
+            first = newLink;
+            return;
+        }
+        Link current = first;
+        while (current.next != null) {
+            current = current.next;
+        }
+
+        current.next = newLink;
+    }
+
     public Link deleteFirst() {
         Link temp = first;
         first = first.next;
