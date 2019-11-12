@@ -1,35 +1,37 @@
 package com.yang.javadatastructure.d_linklist;
 
 /**
- * @author yangjing
+ * @author: Jing Yang
+ * @date: 11/12/2019
  */
 public class DoublyLinkListApp {
 
     public static void main(String[] args) {
+        DoublyLinkList linkList = new DoublyLinkList();
+        linkList.insertFirst(100);
+        for (int i = 0; i < 10; i++) {
+            linkList.insertFirst((int) (Math.random() * 100));
+            if (i == 5) {
+                linkList.insertFirst(0);
+            }
+        }
+        linkList.displayFromFirst();
+        linkList.insertAfter(100, 110);
+        linkList.displayFromFirst();
 
-        DoublyLinkList doublyLinkList = new DoublyLinkList();
-        doublyLinkList.insertFirst(33);
-        doublyLinkList.insertFirst(44);
-        doublyLinkList.insertFirst(10);
-        doublyLinkList.insertFirst(21);
+        linkList.deleteFirst();
+        linkList.displayFromFirst();
 
-        doublyLinkList.insertLast(9);
-        doublyLinkList.insertLast(15);
-        doublyLinkList.insertLast(28);
-        doublyLinkList.insertLast(66);
+        linkList.deleteLast();
+        linkList.displayFromFirst();
 
-        doublyLinkList.displayForward();
-        doublyLinkList.displayBackward();
+        linkList.delete(0);
+        linkList.displayFromFirst();
 
-        doublyLinkList.deleteFirst();
-        doublyLinkList.deleteLast();
-        doublyLinkList.deleteKey(21);
-
-        doublyLinkList.displayForward();
-
-        doublyLinkList.insertAfter(15, 77);
-        doublyLinkList.insertAfter(0, 31);
-
-        doublyLinkList.displayForward();
+//        DoublyLinkList linkList2 = new DoublyLinkList();
+//        for (int i = 0; i < 10; i++) {
+//            linkList2.insertLast((int) (Math.random() * 100));
+//        }
+//        linkList2.displayFromLast();
     }
 }

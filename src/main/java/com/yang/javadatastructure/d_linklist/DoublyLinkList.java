@@ -1,123 +1,150 @@
 package com.yang.javadatastructure.d_linklist;
 
 /**
- * @author yangjing
+ * @author: Jing Yang
+ * @date: 11/11/2019
  */
 public class DoublyLinkList {
-
-    private DoublyLink first;
-    private DoublyLink last;
+    private Link first;
+    private Link last;
 
     public DoublyLinkList() {
-        this.first = null;
-        this.last = null;
+        first = null;
+        last = null;
     }
 
-    public boolean isEmpty() {
-        return first == null;
-    }
-
-    public void insertFirst(long data) {
-        DoublyLink link = new DoublyLink(data);
-        if (isEmpty()) {
-            last = link;
+    public void insertFirst(int data) {
+        Link newLink = new Link(data);
+        if (first == null) {
+            last = newLink;
         } else {
-            first.previous = link;
+            newLink.prev = null;
+            first.prev = newLink;
+            newLink.next = first;
         }
-        link.next = first;
-        first = link;
+        first = newLink;
     }
 
-    public void insertLast(long data) {
-        DoublyLink link = new DoublyLink(data);
+    public void insertLast(int data) {
+        Link newLink = new Link(data);
         if (last == null) {
-            first = link;
+            first = newLink;
         } else {
-            last.next = link;
-            link.previous = last;
+            newLink.prev = last;
+            last.next = newLink;
+
         }
-        last = link;
+        last = newLink;
     }
 
-    public boolean insertAfter(long searchCriteria, long insertData) {
-        DoublyLink link = new DoublyLink(insertData);
-        DoublyLink current = first;
-        while (current != null && current.data != searchCriteria) {
+    public void insertAfter(int searchData, int insertData) {
+        if (first == null) {
+            System.out.println("The LinkList is empty.");
+        }
+        Link newLink = new Link(insertData);
+        Link current = first;
+        while (current.data != searchData) {
+            if (current.next == null) {
+                System.out.println("Cannot find given data.");
+                return;
+            }
             current = current.next;
         }
-        if (current == null) {
-            return false;
-        } else if (current == last) {
-            link.next = null;
-            last = link;
+        newLink.prev = current;
+        newLink.next = current.next;
+        if (current.next != null) {
+            current.next.prev = newLink;
         } else {
-            current.next.previous = link;
-            link.next = current.next;
+            last = newLink;
         }
-        current.next = link;
-        link.previous = current;
-        return true;
+        current.next = newLink;
     }
 
-    public DoublyLink deleteFirst() {
-        DoublyLink temp = first;
-        if (first.next != null) {
-            first.next.previous = null;
+    public Link deleteFirst() {
+        Link temp = first;
+        if (first == null) {
+            return null;
         } else {
-            last = null;
+            if (first.next != null) {
+                first.next.prev = null;
+            }
+            first = first.next;
+            return temp;
         }
-        first = first.next;
-        return temp;
     }
 
-    public DoublyLink deleteLast() {
-        DoublyLink temp = last;
-        if (last.previous != null) {
-            last.previous.next = null;
+    public Link deleteLast() {
+        Link temp = last;
+        if (last == null) {
+            return null;
         } else {
-            first = null;
+            if (last.prev != null) {
+                last.prev.next = null;
+            }
+            last = last.prev;
+            return temp;
         }
-        last = last.previous;
-        return temp;
     }
 
-    public DoublyLink deleteKey(long deleteKey) {
-        DoublyLink current = first;
-        while (current != null && current.data != deleteKey) {
-            current = current.next;
-        }
-        if (current == null) {
+    public Link delete(int deleteData) {
+        if (first == null) {
+            System.out.println("The LinkList is empty.");
             return null;
         }
-        if (current == first) {
-            first = current.next;
-        } else {
-            current.previous.next = current.next;
+        Link current = first;
+        while (current.data != deleteData) {
+            if (current.next == null) {
+                System.out.println("Cannot find given data.");
+                return null;
+            }
+            current = current.next;
         }
-
-        if (current == last) {
-            last = last.previous;
+        if (current.prev != null) {
+            current.prev.next = current.next;
         } else {
-            current.next.previous = current.previous;
+            first = current.next;
+        }
+        if (current.next != null) {
+            current.next.prev = current.prev;
+        } else {
+            last = current.prev;
         }
         return current;
     }
 
-    public void displayForward() {
-        System.out.println("DoublyLinkList (first --> last):");
-        DoublyLink current = first;
+
+    public void displayFromFirst() {
+        System.out.println("----------LinkList(first to last)---------");
+        Link current = first;
         while (current != null) {
-            current.display();
+            System.out.print(String.format("%d, ", current.data));
             current = current.next;
         }
+        System.out.println();
+        System.out.println("----------LinkList finish---------");
     }
 
-    public void displayBackward() {
-        System.out.println("DoublyLinkList (last --> first):");
-        DoublyLink current = last;
+    public void displayFromLast() {
+        System.out.println("---------LinkList(last to first)---------");
+        Link current = last;
         while (current != null) {
-            current.display();
-            current = current.previous;
+            System.out.print(String.format("%d, ", current.data));
+            current = current.prev;
+        }
+        System.out.println();
+        System.out.println("---------LinkList finish---------");
+    }
+
+
+    class Link {
+        private int data;
+        private Link prev;
+        private Link next;
+
+        public Link(int data) {
+            this.data = data;
+            prev = null;
+            next = null;
         }
     }
 
