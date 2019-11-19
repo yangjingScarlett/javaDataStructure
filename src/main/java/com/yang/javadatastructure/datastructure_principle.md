@@ -22,4 +22,31 @@ If you still want to add new elements, you need to create a new array has longer
 then paste into new array, then add elements to new array, then delete the old array.
 
 # Stack
-Last in First Out: think of the plates in a box, the first one you can take is the last one you put in
+**Last in First Out:** think of the plates in a box, the first one you can take is the last one you put in.  
+>![](stack.png)
+
+# Queue
+**First in First Out:** think of when you in a queue for paying in a market, the first people join the queue will
+first pay and leave.
+>![](queue.png)
+
+
+# Linked List
+**List of Objects:** each item of the list is a Object containing at least two variables, one is the value,
+another is the address of next Object.
+>![](linkList.png)
+
+> **The Doubly Link List:**  
+![](doublyLinkList.png)
+
+# Binary Search Tree: 
+**one node at most has two children. when insert node to this tree, the node less than or equal to parent should be in the left sub-tree, 
+greater than parent should be int the right sub-tree of parent.**
+![](binarySearchTree.png)
+
+# HashMap: 
+**hash map uses an array to save the info(an object) of each key-value pairs. generally, each item of that array is an object,
+such as Node, contains the hash value of the key, the key, and the value, and the next Node.
+the hash value of the key decides the index of that Node in the array. Because some keys may have the same hash value,
+so each Node should have a Node variable to link the next Node that has the same index**
+![](hashmap_prototype.png)
