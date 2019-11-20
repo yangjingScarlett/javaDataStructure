@@ -13,9 +13,8 @@ public class ArrayPartitionApp {
         }
         arrayPartition.display();
 
-        long pivot = 50;
-        int index = arrayPartition.partition(pivot);
-        System.out.println("The pivot[" + pivot + "] is in index " + index);
+        int index = arrayPartition.partition(0, arrayPartition.size() - 1);
+        System.out.println("The pivot is in index " + index);
         arrayPartition.display();
     }
 }

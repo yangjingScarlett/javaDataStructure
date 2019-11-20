@@ -34,27 +34,28 @@ public class ArrayPartition {
         System.out.println("}");
     }
 
-    public int partition(long pivot) {
-        int leftIndex = 0;
-        int rightIndex = nElems - 1;
-
-        while (true) {
-            while (leftIndex < rightIndex && arr[leftIndex] < pivot) {
-                leftIndex++;
+    public int partition(int start, int end) {
+        long pivot = arr[end];
+        int left = start;
+        int right = end - 1;
+        while (left < right) {
+            while (left < right && arr[left] <= pivot) {
+                left++;
             }
-
-            while (leftIndex < rightIndex && arr[rightIndex] > pivot) {
-                rightIndex--;
+            while (left < right && arr[right] > pivot) {
+                right--;
             }
-
-            if (leftIndex >= rightIndex) {
-                break;
-            } else {
-                long temp = arr[rightIndex];
-                arr[rightIndex] = arr[leftIndex];
-                arr[leftIndex] = temp;
+            if (left < right) {
+                swap(left, right);
             }
         }
-        return leftIndex;
+        swap(left, end);
+        return left;
+    }
+
+    private void swap(int i, int j) {
+        long temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
