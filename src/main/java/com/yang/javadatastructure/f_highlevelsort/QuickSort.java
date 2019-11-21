@@ -13,7 +13,7 @@ public class QuickSort {
             arr[i] = (int) (Math.random() * 100);
         }
         display(arr);
-        quickSort(arr, 0, arr.length - 1);
+        sort(arr, 0, arr.length - 1);
         display(arr);
     }
 
@@ -42,6 +42,37 @@ public class QuickSort {
             }
         }
         swap(left, low, arr);
+        return left;
+    }
+
+    private static void sort(int[] arr, int low, int high) {
+        if (low < 0 || low >= high) {
+            return;
+        }
+        int temp = p(arr, low, high);
+        sort(arr, low, temp - 1);
+        sort(arr, temp + 1, high);
+    }
+
+    // compare p and partition: the range of left and right must contain the pivot index
+    // if choose left as pivot, the condition should be arr[left] <= pivot
+    // if choose right as pivot, the condition should be arr[right] >= pivot
+    private static int p(int[] arr, int low, int high) {
+        long pivot = arr[high];
+        int left = low;
+        int right = high;
+        while (left < right) {
+            while (left < right && arr[left] < pivot) {
+                left++;
+            }
+            while (left < right && arr[right] >= pivot) {
+                right--;
+            }
+            if (left < right) {
+                swap(left, right, arr);
+            }
+        }
+        swap(left, high, arr);
         return left;
     }
 
