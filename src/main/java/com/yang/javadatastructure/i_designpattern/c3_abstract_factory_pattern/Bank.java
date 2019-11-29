@@ -5,4 +5,5 @@ package com.yang.javadatastructure.i_designpattern.c3_abstract_factory_pattern;
  * @date: 11/28/2019
  */
 public interface Bank {
+    String getBankName();
 }
