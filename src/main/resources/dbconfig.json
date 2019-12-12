@@ -1,0 +1,17 @@
+{
+  "localDB": {
+    "address": "127.0.0.1",
+    "port": 27017,
+    "user": "",
+    "pwd": "",
+    "database": "learnMongo"
+  },
+  "remoteDB": {
+    "address": "10.189.155.92",
+    "port": 27017,
+    "user": "admin",
+    "pwd": "ilfamily1314",
+    "auth-database": "admin",
+    "database": "learnMongo"
+  }
+}
