@@ -14,7 +14,7 @@ So you can think that an int number in memory took 4 bytes position, and each by
 An array is a constant address in memory to save a fixed numbers data.
 ```
 int a = 3;
-int[] sampleArray = {0, 1, 2, 3}; // this will take constant 32 bytes in memory
+int[] sampleArray = {0, 1, 2, 3}; // this will take constant 16 bytes in memory
 int b = 10;
 ```
 You cannot add two other elements to sampleArray, because at that address there is no available address for new elements.  
