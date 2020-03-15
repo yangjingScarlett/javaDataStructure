@@ -2,7 +2,7 @@ package com.yang.javadatastructure.a_array;
 
 /*
  * @Author: jing yang
- * 
+ *
  * @Date: 2018-08-31 14:20:29
  */
 public class OrderedArray {
@@ -53,6 +53,24 @@ public class OrderedArray {
         }
 
         return -1;
+    }
+
+    // 二分法获取给定data的索引，如果没有data，则返回第一个大于data的值的索引
+    public int getIndex(int low, int high, int data) {
+        if (low <= high) {
+            int middle = (low + high) / 2;
+            int index = 0;
+            if (arr[middle] < data) {
+                index = getIndex(middle + 1, high, data);
+            } else if (arr[middle] > data) {
+                index = getIndex(low, middle - 1, data);
+            } else {
+                return middle;
+            }
+            return index;
+        } else {
+            return low;
+        }
     }
 
     // 删除数组中的某个值

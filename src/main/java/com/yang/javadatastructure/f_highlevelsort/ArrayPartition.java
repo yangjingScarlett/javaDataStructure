@@ -37,12 +37,12 @@ public class ArrayPartition {
     public int partition(int start, int end) {
         long pivot = arr[end];
         int left = start;
-        int right = end - 1;
+        int right = end;
         while (left < right) {
-            while (left < right && arr[left] <= pivot) {
+            while (left < right && arr[left] < pivot) {
                 left++;
             }
-            while (left < right && arr[right] > pivot) {
+            while (left < right && arr[right] >= pivot) {
                 right--;
             }
             if (left < right) {
